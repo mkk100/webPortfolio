@@ -54,29 +54,29 @@ const thomas = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasi
 scene.add(thomas);
 
 
-const sunTexture = new THREE.TextureLoader().load('sun.webp');
+const moonTexture = new THREE.TextureLoader().load('moon.jpg');
 const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
-const sun = new THREE.Mesh(
+const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
-    map: sunTexture,
+    map: moonTexture,
 
   })
 );
-scene.add(sun);
+scene.add(moon);
 
-sun.position.z = 30;
-sun.position.setX(-10);
+moon.position.z = 30;
+moon.position.setX(-10);
 
 thomas.position.z = -5;
 thomas.position.x = 2;
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  sun.rotation.x += 0.05;
-  sun.rotation.y += 0.075;
-  sun.rotation.z += 0.05;
+  moon.rotation.x += 0.05;
+  moon.rotation.y += 0.075;
+  moon.rotation.z += 0.05;
 
   thomas.rotation.y += 0.01;
   thomas.rotation.z += 0.01;

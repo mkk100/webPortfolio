@@ -14,13 +14,13 @@ camera.position.setX(-3);
 
 renderer.render(scene,camera);
 
-const geometry = new THREE.TorusGeometry(10,3,16,100)
+const geometry = new THREE.TorusGeometry(10,3,9,100)
 const material = new THREE.MeshStandardMaterial({color: 0xff6347});
 const torus = new THREE.Mesh(geometry,material);
 scene.add(torus)
 
 const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(5, 5, 5);
+pointLight.position.set(2, 2, 2);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
@@ -44,7 +44,7 @@ function addStar(){
 }
 Array(200).fill().forEach(addStar);
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpeg');
+const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 
 const thomasTexture = new THREE.TextureLoader().load('thomas.jpg');
@@ -54,29 +54,29 @@ const thomas = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasi
 scene.add(thomas);
 
 
-const saturnTexture = new THREE.TextureLoader().load('saturn.jpeg');
+const sunTexture = new THREE.TextureLoader().load('sun.webp');
 const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
-const saturn = new THREE.Mesh(
+const sun = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
-    map: saturnTexture,
-    normalMap: normalTexture,
+    map: sunTexture,
+
   })
 );
-scene.add(s);
+scene.add(sun);
 
-saturn.position.z = 30;
-saturn.position.setX(-10);
+sun.position.z = 30;
+sun.position.setX(-10);
 
 thomas.position.z = -5;
 thomas.position.x = 2;
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  saturn.rotation.x += 0.05;
-  saturn.rotation.y += 0.075;
-  saturn.rotation.z += 0.05;
+  sun.rotation.x += 0.05;
+  sun.rotation.y += 0.075;
+  sun.rotation.z += 0.05;
 
   thomas.rotation.y += 0.01;
   thomas.rotation.z += 0.01;
@@ -87,6 +87,7 @@ function moveCamera() {
 }
 document.body.onscroll = moveCamera;
 moveCamera();
+
 function animate(){
   requestAnimationFrame(animate);
   torus.rotation.x += 0.01;
